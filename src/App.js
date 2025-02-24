@@ -5,16 +5,18 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Carrito from "./components/Carrito";
+import Perfil from "./pages/Perfil";
 
 function App() {
   return (
     <Router>
-      <Navbar /> {/* Agrega el Navbar aquí */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/carrito" element={<Carrito />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </Router>
   );

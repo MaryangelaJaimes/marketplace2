@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./UserContext";
 
-const Producto = ({ producto, agregarAlCarrito }) => {
+const Producto = ({ producto }) => {
   const [cantidad, setCantidad] = useState(1);
+  const { agregarAlCarrito } = useContext(UserContext);
 
   const handleAgregarAlCarrito = () => {
     agregarAlCarrito({ ...producto, cantidad });
-    alert(`Agregado con exito: ${producto.nombre} `);
+    alert(`Agregado con éxito: ${producto.nombre}`);
   };
 
   return (
-    <div key={producto.id} className="col-md-4 mb-4">
+    <div className="col-md-4 mb-4">
       <div className="card shadow-sm">
         <img
           src={producto.imagen}
@@ -23,21 +25,19 @@ const Producto = ({ producto, agregarAlCarrito }) => {
             <strong>Precio:</strong> ${producto.precio.toFixed(2)}
           </p>
           <div className="d-flex justify-content-between align-items-center">
-            <div>
-              <input
-                type="number"
-                min="1"
-                value={cantidad}
-                onChange={(e) => setCantidad(parseInt(e.target.value))}
-                className="form-control"
-                style={{ width: "80px" }}
-              />
-            </div>
+            <input
+              type="number"
+              min="1"
+              value={cantidad}
+              onChange={(e) => setCantidad(parseInt(e.target.value))}
+              className="form-control"
+              style={{ width: "80px" }}
+            />
             <button
-              className="btn btn-primary"
+              className="btn btn-secondary"
               onClick={handleAgregarAlCarrito}
             >
-              Agregar al carrito
+              Agregar
             </button>
           </div>
         </div>

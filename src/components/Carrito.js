@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { UserContext } from "./UserContext";
 
 const Carrito = () => {
-  const { user, eliminarProducto, disminuirCantidad } = useContext(UserContext);
-  const carrito = user ? user.carrito : [];
+  const { carrito, eliminarProducto, disminuirCantidad } =
+    useContext(UserContext);
 
   return (
     <div className="container mt-4">

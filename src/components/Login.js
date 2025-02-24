@@ -1,7 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../components/UserContext";
 
 const Login = () => {
+  const { iniciarSesion } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      await iniciarSesion(email, password);
+      navigate("/perfil");
+    } catch (error) {
+      setError("Correo o contraseña incorrectos");
+    }
+  };
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -9,7 +28,10 @@ const Login = () => {
           <div className="card">
             <div className="card-body">
               <h2 className="card-title text-center">Iniciar Sesión</h2>
-              <form>
+
+              {error && <div className="alert alert-danger">{error}</div>}
+
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
@@ -19,6 +41,9 @@ const Login = () => {
                     className="form-control"
                     id="email"
                     placeholder="name@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -29,7 +54,10 @@ const Login = () => {
                     type="password"
                     className="form-control"
                     id="password"
-                    placeholder="......"
+                    placeholder="******"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="d-grid">
@@ -38,6 +66,7 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+
               <div className="text-center mt-3">
                 <Link to="/register" className="btn btn-link">
                   ¿No tienes una cuenta? Regístrate aquí
