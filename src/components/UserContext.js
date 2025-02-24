@@ -33,14 +33,17 @@ export const UserProvider = ({ children }) => {
           body: JSON.stringify({ nombre, email, password }),
         }
       );
-
-      if (!response.ok) throw new Error("Error en el registro");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error en el registro");
+      }
 
       const data = await response.json();
       guardarUsuario({ ...data.usuario, publicaciones: [] });
       localStorage.setItem("token", data.token);
     } catch (error) {
       console.error("Error en registrar:", error);
+      alert(error.message);
     }
   };
 
