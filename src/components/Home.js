@@ -12,15 +12,15 @@ const Home = () => {
           className="img-fluid w-100"
           style={{ maxHeight: "400px", objectFit: "cover" }}
         />
-        {/* Contenedor de texto alineado a la izquierda */}
+
         <div
           className="position-absolute top-50 start-0 translate-middle-y p-4"
           style={{
             zIndex: 2,
-            background: "rgba(0, 0, 0, 0.5)", // Fondo oscuro semitransparente para mejorar visibilidad
+            background: "rgba(0, 0, 0, 0.5)",
             borderRadius: "10px",
             maxWidth: "40%",
-            marginLeft: "20px", // Espaciado para que no quede pegado al borde
+            marginLeft: "20px",
           }}
         >
           <h1 className="text-white fw-bold">TechTrend Innovations</h1>
