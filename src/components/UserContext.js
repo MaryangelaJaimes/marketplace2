@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
   const [cargando, setCargando] = useState(true);
 
+  // Cargar datos del usuario y carrito desde localStorage al iniciar
   useEffect(() => {
     const usuarioGuardado = localStorage.getItem("usuario");
     const carritoGuardado = localStorage.getItem("carrito");
@@ -17,6 +18,7 @@ export const UserProvider = ({ children }) => {
     setCargando(false);
   }, []);
 
+  // Guardar usuario en el estado y localStorage
   const guardarUsuario = (nuevoUsuario) => {
     setUsuario(nuevoUsuario);
     localStorage.setItem("usuario", JSON.stringify(nuevoUsuario));
@@ -33,6 +35,7 @@ export const UserProvider = ({ children }) => {
           body: JSON.stringify({ nombre, email, password }),
         }
       );
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Error en el registro");
@@ -43,7 +46,7 @@ export const UserProvider = ({ children }) => {
       localStorage.setItem("token", data.token);
     } catch (error) {
       console.error("Error en registrar:", error);
-      alert(error.message);
+      alert(error.message); // Mostrar mensaje de error al usuario
     }
   };
 
@@ -59,7 +62,10 @@ export const UserProvider = ({ children }) => {
         }
       );
 
-      if (!response.ok) throw new Error("Error en la autenticación");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error en la autenticación");
+      }
 
       const data = await response.json();
       guardarUsuario({
@@ -69,6 +75,7 @@ export const UserProvider = ({ children }) => {
       localStorage.setItem("token", data.token);
     } catch (error) {
       console.error("Error en iniciar sesión:", error);
+      alert("Correo o contraseña incorrectos"); // Mostrar mensaje de error al usuario
     }
   };
 
