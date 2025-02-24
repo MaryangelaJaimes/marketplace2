@@ -25,11 +25,14 @@ export const UserProvider = ({ children }) => {
   // Registrar usuario
   const registrar = async (nombre, email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, email, password }),
-      });
+      const response = await fetch(
+        "https://marketplace-backend-64yl.onrender.com",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nombre, email, password }),
+        }
+      );
 
       if (!response.ok) throw new Error("Error en el registro");
 
