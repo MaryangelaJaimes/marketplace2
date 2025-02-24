@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
   const registrar = async (nombre, email, password) => {
     try {
       const response = await fetch(
-        "https://marketplace-backend-64yl.onrender.com",
+        "https://marketplace-backend-64yl.onrender.com/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -47,11 +47,14 @@ export const UserProvider = ({ children }) => {
   // Iniciar sesión
   const iniciarSesion = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://marketplace-backend-64yl.onrender.com/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (!response.ok) throw new Error("Error en la autenticación");
 
