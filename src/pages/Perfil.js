@@ -72,7 +72,7 @@ const Perfil = () => {
                   accept="image/*"
                   onChange={(e) => setImagen(e.target.files[0])}
                 />
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-secondary">
                   Publicar
                 </button>
               </form>
