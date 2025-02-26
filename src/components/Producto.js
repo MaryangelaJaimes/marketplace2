@@ -11,12 +11,13 @@ const Producto = ({ producto }) => {
   };
 
   return (
-    <div className="col-md-4 mb-4">
-      <div className="card shadow-sm">
+    <div className="col mb-4">
+      <div className="card shadow-sm h-100">
         <img
           src={producto.imagen}
           alt={producto.nombre}
-          className="card-img-top"
+          className="card-img-top zoom"
+          style={{ objectFit: "cover", height: "250px" }}
         />
         <div className="card-body">
           <h5 className="card-title">{producto.nombre}</h5>

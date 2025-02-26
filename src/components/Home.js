@@ -1,5 +1,8 @@
 import React from "react";
 import Publicaciones from "./Publicaciones";
+import Recomendaciones from "./Recomendaciones";
+import Categorias from "./Categorias";
+import "../Home.css";
 
 const Home = () => {
   return (
@@ -17,7 +20,6 @@ const Home = () => {
           className="position-absolute top-50 start-0 translate-middle-y p-4"
           style={{
             zIndex: 2,
-            background: "rgba(0, 0, 0, 0.5)",
             borderRadius: "10px",
             maxWidth: "40%",
             marginLeft: "20px",
@@ -30,7 +32,13 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sección de publicaciones */}
+      {/* Sección de Recomendaciones */}
+      <Recomendaciones />
+
+      {/* Sección de Categorías */}
+      <Categorias />
+
+      {/* Sección de Publicaciones */}
       <div className="container mt-4">
         <Publicaciones />
       </div>

@@ -57,9 +57,9 @@ const Publicaciones = () => {
   ]);
 
   return (
-    <div className="container mt-4 ">
-      <h2>Productos Disponibles</h2>
-      <div className="row">
+    <div className="container mt-4">
+      <h1>Productos Disponibles</h1>
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {productos.map((producto) => (
           <Producto
             key={producto.id}

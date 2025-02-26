@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
+import "./Register.css";
 
 const Register = () => {
   const { registrar } = useContext(UserContext);
