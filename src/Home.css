@@ -1,9 +1,71 @@
-/* Establecer Montserrat como fuente predeterminada para todo en Home (si ya lo tienes) */
-body {
-  font-family: "Montserrat", sans-serif;
+/* Estilos para el banner */
+.banner-container {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-/* Estilos para títulos (h1, h2, etc.) */
+.banner-container img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.position-absolute {
+  max-width: 60%;
+}
+
+/* Ajustar texto en el banner para móviles */
+@media (max-width: 768px) {
+  .position-absolute {
+    max-width: 80%;
+    margin-left: 10px;
+    padding: 1rem;
+  }
+}
+
+/* Estilos para las cards con sombra */
+.shadow-sm {
+  box-shadow: var(--bs-box-shadow-sm) !important;
+  overflow: hidden;
+}
+
+/* Estilos para las imágenes en las cards */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 260px;
+}
+
+/* Efecto de zoom para las imágenes */
+.zoom {
+  transition: all 0.3s ease;
+  overflow: hidden; /* Para evitar que la imagen se desborde al hacer zoom */
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .zoom:hover {
+    transform: none; /* Desactivar zoom en móviles si es necesario */
+  }
+  .card-img-top {
+    max-height: 200px; /* Reducir altura en móviles para evitar recortes */
+  }
+}
+
+/* Estilos generales para las cards */
+.card {
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilos para títulos y texto general */
 h1,
 h2,
 h3,
@@ -13,7 +75,6 @@ h6 {
   font-weight: 700; /* Bold para títulos */
 }
 
-/* Estilos para texto normal */
 p,
 .card-text {
   font-weight: 400; /* Regular para texto normal */
@@ -35,51 +96,26 @@ p,
   .card-text {
     font-size: 0.9rem;
   }
-}
 
-/* Ajustes específicos para el texto del banner */
-.banner-text h1 {
-  font-size: 2.5rem; /* Tamaño grande en desktop */
-  margin-bottom: 0.5rem; /* Espaciado entre título y subtítulo */
-}
-
-.banner-text p {
-  font-size: 1.1rem; /* Tamaño mediano para el subtítulo en desktop */
-}
-
-/* Hacer el texto responsivo en móviles */
-@media (max-width: 768px) {
-  .banner-text h1 {
-    font-size: 1.5rem; /* Tamaño más pequeño en móviles */
+  /* Estilos íconos de redes sociales en el footer */
+  .social-icons .fa-x-twitter,
+  .social-icons .fa-instagram,
+  .social-icons .fa-github {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
   }
-  .banner-text p {
-    font-size: 0.9rem; /* Tamaño más pequeño para el subtítulo en móviles */
+
+  .social-icons .fa-x-twitter:hover,
+  .social-icons .fa-instagram:hover,
+  .social-icons .fa-github:hover {
+    color: #e9ecef;
   }
-}
 
-/* Ajustar el contenedor del banner en móviles */
-.position-absolute {
-  max-width: 80% !important; /* Más ancho en móviles para que el texto quepa mejor */
-  margin-left: 10px !important; /* Menos margen en móviles */
-}
-
-@media (max-width: 768px) {
-  .position-absolute {
-    padding: 1rem; /* Reducir padding en móviles para ahorrar espacio */
-  }
-}
-
-/* Mantener el efecto hover para imágenes (si ya lo tienes) */
-.zoom {
-  transition: all 0.3s;
-}
-
-.zoom:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .zoom:hover {
-    transform: none;
+  @media (max-width: 768px) {
+    .social-icons .fa-x-twitter,
+    .social-icons .fa-instagram,
+    .social-icons .fa-github {
+      font-size: 1.2rem;
+    }
   }
 }

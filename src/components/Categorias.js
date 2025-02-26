@@ -3,23 +3,23 @@ import React from "react";
 const Categorias = () => {
   return (
     <div className="container mt-4">
-      <h1 className="mb-4">Categorías</h1>
+      <h2 className="mb-4 text-center">Categorías</h2>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {[
           {
-            nombre: "Series 10",
+            nombre: "Hogar Inteligente",
             imagen:
-              "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-s10-202409?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1724168059157",
+              "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/homepod-select-midnight-202210?wid=940&hei=1112&fmt=png-alpha&.v=1670557210097",
           },
           {
-            nombre: "AirPods Max",
+            nombre: "Dispositivos Portatiles",
             imagen:
-              "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-ultra2-202409_GEO_CL?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1725113868920",
+              "https://i02.appmifile.com/507_item_cl/14/02/2025/a2966d83e7443869fe9a79d7166bf32e!600x600!85.png",
           },
           {
-            nombre: "Max Max",
+            nombre: "Monitores",
             imagen:
-              "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-se-202409?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1724168056018",
+              "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/pro-display-gallery1-201909?wid=4000&hei=3072&fmt=jpeg&qlt=90&.v=1574201024213",
           },
         ].map((categoria, index) => (
           <div key={index} className="col">
@@ -28,7 +28,7 @@ const Categorias = () => {
                 src={categoria.imagen}
                 alt={categoria.nombre}
                 className="card-img-top zoom"
-                style={{ height: "250px", objectFit: "cover" }}
+                style={{ width: "100%", height: "auto", objectFit: "contain" }}
               />
               <div className="card-body">
                 <h5 className="card-title">{categoria.nombre}</h5>

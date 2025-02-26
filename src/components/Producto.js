@@ -10,6 +10,11 @@ const Producto = ({ producto }) => {
     alert(`Agregado con éxito: ${producto.nombre}`);
   };
 
+  // Función para formatear el precio con punto como separador de miles y ceros al final
+  const formatPrice = (price) => {
+    return `$ ${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+  };
+
   return (
     <div className="col mb-4">
       <div className="card shadow-sm h-100">
@@ -17,13 +22,22 @@ const Producto = ({ producto }) => {
           src={producto.imagen}
           alt={producto.nombre}
           className="card-img-top zoom"
-          style={{ objectFit: "cover", height: "250px" }}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "contain",
+            maxHeight: "260px",
+          }}
         />
         <div className="card-body">
           <h5 className="card-title">{producto.nombre}</h5>
           <p className="card-text">{producto.descripcion}</p>
-          <p className="card-text">
-            <strong>Precio:</strong> ${producto.precio.toFixed(2)}
+          {/* Mostrar solo el monto, más grande y oscuro, con formato personalizado */}
+          <p
+            className="card-text price-amount"
+            style={{ fontSize: "1.5rem", color: "#333" }}
+          >
+            {formatPrice(producto.precio)}
           </p>
           <div className="d-flex justify-content-between align-items-center">
             <input
